@@ -1,9 +1,12 @@
 package bean;
 
+import org.springframework.context.annotation.ComponentScan;
+
 /**
  * UserInfo entity. @author MyEclipse Persistence Tools
  */
 
+@ComponentScan
 public class UserInfo implements java.io.Serializable {
 
 	// Fields

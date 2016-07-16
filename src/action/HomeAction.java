@@ -1,16 +1,27 @@
 package action;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
 import bean.UserInfo;
 import dao.UserInfoDAO;
 
+
+@Configuration
+@ComponentScan
 public class HomeAction {
 
 	/**
 	 * 
 	 */
 
+	@Autowired
 	UserInfoDAO userInfoDAO;
+	
+	@Autowired
 	UserInfo userInfo;
+	
 	String username;
 	
 	public String getPassword() {
@@ -34,8 +45,7 @@ public class HomeAction {
 	String email;
 	
 	public String register(){
-		
-		userInfo= new UserInfo();
+
 		userInfo.setUsername(username);
 		userInfo.setEmail(email);
 		userInfo.setPassword(password);
@@ -49,17 +59,6 @@ public class HomeAction {
 	public String getUsername() {
 		return username;
 	}
-
-
-	public UserInfoDAO getUserInfoDAO() {
-		return userInfoDAO;
-	}
-
-
-	public void setUserInfoDAO(UserInfoDAO userInfoDAO) {
-		this.userInfoDAO = userInfoDAO;
-	}
-
 
 	public void setUsername(String username) {
 		this.username = username;

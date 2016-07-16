@@ -12,11 +12,7 @@
 	 					http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
 	 					 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd" xmlns:tx="http://www.springframework.org/schema/tx">
 
-	<bean id = "HomeAction" class = "action.HomeAction">
-		<property name = "userInfoDAO">
-			<ref bean = "UserInfoDAO"></ref>
-		</property>
-	</bean>
+	<bean id = "HomeAction" class = "action.HomeAction"/>
 	
 	<bean id = "registerAOP" class = "aop.RegisterAOP">
 	</bean>
@@ -56,9 +52,12 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<tx:annotation-driven transaction-manager="transactionManager" /><bean
-		id="UserInfoDAO" class="dao.UserInfoDAO">
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="UserInfoDAO" class="dao.UserInfoDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
-</bean></beans>
+	</bean>
+		
+	<bean id="UserInfo" class="bean.UserInfo"/>
+</beans>	
